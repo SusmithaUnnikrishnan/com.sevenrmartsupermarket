@@ -1,0 +1,12 @@
+<suite name="ReleaseRunner" parallel="tests">
+	<test name="SmokeTest">
+		<classes>
+			<class name="com.sevenrmartsupermarket.tests.HomeTest"></class>	
+		</classes>
+	</test>
+	<test name="ManageOrdersModuleTest">
+		<classes>
+			<class name="com.sevenrmartsupermarket.tests.ManageOrdersTest"></class>	
+		</classes>
+	</test>
+</suite>
