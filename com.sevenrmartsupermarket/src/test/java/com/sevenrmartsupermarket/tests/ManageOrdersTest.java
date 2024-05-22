@@ -26,7 +26,5 @@ public class ManageOrdersTest extends Base{
 		homepage.clickOnManageOrders();
 		manageorderspage.searchProduct(orderId);
 	}
-	
-	
 
 }

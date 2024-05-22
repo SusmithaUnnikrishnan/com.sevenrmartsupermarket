@@ -12,6 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 
 import com.sevenrmartsupermarket.constants.Constants;
 import com.sevenrmartsupermarket.utilities.ScreenshotCapture;
@@ -56,7 +57,15 @@ public class Base {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Constants.IMPLICIT_WAIT));	
 	}
 	
-	@BeforeMethod
+	@Parameters("browser")
+	@BeforeMethod(enabled=false)//the browser is taken from suite
+	public void launchBrowser(String browser)
+	{
+		String url=properties.getProperty("url");
+		initialize(browser,url);
+	}
+	
+	@BeforeMethod(enabled=true)
 	public void launchBrowser()
 	{
 		String browser=properties.getProperty("browser");
@@ -72,5 +81,6 @@ public class Base {
 			screenshotcapture.takeScreenshot(driver, itestresult.getName());
 		}
 	}
+	
 
 }

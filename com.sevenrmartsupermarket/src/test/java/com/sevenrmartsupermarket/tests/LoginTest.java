@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import com.sevenrmartsupermarket.base.Base;
 import com.sevenrmartsupermarket.pages.HomePage;
 import com.sevenrmartsupermarket.pages.LoginPage;
+import com.sevenrmartsupermarket.utilities.DataProviders;
 import com.sevenrmartsupermarket.utilities.GeneralUtility;
 
 public class LoginTest extends Base {
@@ -75,6 +76,17 @@ public class LoginTest extends Base {
 		String actualProfileName = homepage.getProfileName();
 		Assert.assertEquals(actualProfileName, expectedProfileName);	
 		
+	}
+	
+
+	@Test(dataProvider = "NewLoginCredentials",dataProviderClass = DataProviders.class)
+	public void verifyLoginUsingDataProvider(String user,String password) {
+		loginpage=new LoginPage(driver);
+		homepage = new HomePage(driver);
+		loginpage.login(user,password);
+		String actualProfileName = homepage.getProfileName();
+		String expectedProfileName = user;
+		Assert.assertEquals(actualProfileName, expectedProfileName);
 	}
 
 }
