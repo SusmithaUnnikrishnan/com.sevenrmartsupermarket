@@ -16,7 +16,7 @@ public class AdminUsersTest extends Base {
 	AdminUsersPage adminuserspage;
 	
 	
-	@Test
+	@Test(groups="sanity")
 	public void verifyUsernameAlreadyExistAlertMessage()
 	{
 		//ScreenshotCapture screenshotcapture=new ScreenshotCapture();
@@ -31,7 +31,7 @@ public class AdminUsersTest extends Base {
 		Assert.assertTrue(expectedMessage);		
 	}
 	
-	@Test
+	@Test(groups="sanity")
 	public void verifyNewlyCreatedAdminLogo()
 	{
 		loginpage = new LoginPage(driver);		
@@ -46,7 +46,7 @@ public class AdminUsersTest extends Base {
 		
 	}
 	
-	@Test
+	@Test(groups="smoke")
 	public void verifyNewAdminUserCreated()
 	{
 		loginpage = new LoginPage(driver);		
@@ -87,7 +87,7 @@ public class AdminUsersTest extends Base {
 		
 	}
 	
-	@Test
+	@Test(retryAnalyzer=com.sevenrmartsupermarket.listeners.RetryAnalyzer.class)
 	public void verifyUserProfileDeletion() //how to handle alert???
 	{
 		loginpage = new LoginPage(driver);		

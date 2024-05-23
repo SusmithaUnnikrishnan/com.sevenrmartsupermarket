@@ -65,7 +65,7 @@ public class Base {
 		initialize(browser,url);
 	}
 	
-	@BeforeMethod(enabled=true)
+	@BeforeMethod(enabled=true,alwaysRun=true)
 	public void launchBrowser()
 	{
 		String browser=properties.getProperty("browser");
@@ -73,7 +73,7 @@ public class Base {
 		initialize(browser,url);
 	}
 	
-	@AfterMethod
+	@AfterMethod(alwaysRun=true)
 	public void terminateBrowser(ITestResult itestresult)
 	{
 		if(itestresult.getStatus()==ITestResult.FAILURE)

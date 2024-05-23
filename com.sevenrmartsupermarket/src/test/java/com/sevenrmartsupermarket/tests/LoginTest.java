@@ -20,7 +20,7 @@ public class LoginTest extends Base {
 	 loginpage.login();
 	}
 	
-	@Test
+	@Test(groups={"sanity","sanity"},retryAnalyzer=com.sevenrmartsupermarket.listeners.RetryAnalyzer.class)
 	public void verifyValidUserLogin() {
 		
 		loginpage = new LoginPage(driver);		
@@ -32,7 +32,7 @@ public class LoginTest extends Base {
 		
 	}
 	
-	@Test
+	@Test(groups="sanity")
 	public void verifyInvalidUserLogin() {
 	loginpage=new LoginPage(driver);
 	String a=GeneralUtility.getRandomFullname();
@@ -42,7 +42,7 @@ public class LoginTest extends Base {
 		
 	}
 	
-	@Test
+	@Test(groups="sanity")
 	public void verifyLogoText() {
 	loginpage=new LoginPage(driver);
 	String actualLogo=loginpage.logoText();
@@ -50,7 +50,7 @@ public class LoginTest extends Base {
 	Assert.assertEquals(actualLogo, expectedLogo);
 	}
 	
-	@Test
+	@Test(groups="smoke")
 	public void verifyUseridText() {
 	loginpage=new LoginPage(driver);
 	String actualText=loginpage.useridText();
@@ -58,7 +58,7 @@ public class LoginTest extends Base {
 	Assert.assertEquals(actualText, expectedText);
 	}
 	
-	@Test
+	@Test(groups="smoke")
 	public void verifyRemembermeText() {
 		loginpage=new LoginPage(driver);
 	String actualText=loginpage.remembermeText();
@@ -66,7 +66,7 @@ public class LoginTest extends Base {
 	Assert.assertEquals(actualText, expectedText);
 	}
 	
-	@Test
+	@Test(groups="smoke",retryAnalyzer=com.sevenrmartsupermarket.listeners.RetryAnalyzer.class)
 	public void verifyNewlyCreatedUserLogin() {
 		
 		loginpage = new LoginPage(driver);		
@@ -79,7 +79,7 @@ public class LoginTest extends Base {
 	}
 	
 
-	@Test(dataProvider = "NewLoginCredentials",dataProviderClass = DataProviders.class)
+	@Test(dataProvider = "NewLoginCredentials",dataProviderClass = DataProviders.class,groups="smoke")
 	public void verifyLoginUsingDataProvider(String user,String password) {
 		loginpage=new LoginPage(driver);
 		homepage = new HomePage(driver);
