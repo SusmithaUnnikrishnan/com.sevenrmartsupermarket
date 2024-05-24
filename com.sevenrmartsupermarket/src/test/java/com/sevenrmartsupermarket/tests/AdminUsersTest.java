@@ -41,7 +41,7 @@ public class AdminUsersTest extends Base {
 		homepage.logout();
 		loginpage.login("steffy", "abcdef");
 		homepage.clickOnAdminUsers();
-		boolean expectedUserProfileName=adminuserspage.newAdminLogoIsDisplayed();
+		
 		
 		
 	}
