@@ -19,7 +19,7 @@ public class AdminUsersTest extends Base {
 	@Test(groups="sanity")
 	public void verifyUsernameAlreadyExistAlertMessage()
 	{
-		//ScreenshotCapture screenshotcapture=new ScreenshotCapture();
+		
 		loginpage = new LoginPage(driver);		
 		homepage = new HomePage(driver);
 		adminuserspage=new AdminUsersPage(driver);
