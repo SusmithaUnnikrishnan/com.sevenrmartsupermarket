@@ -25,7 +25,7 @@ public class AdminUsersTest extends Base {
 		adminuserspage=new AdminUsersPage(driver);
 		loginpage.login();
 		homepage.clickOnAdminUsers();
-		//screenshotcapture.takeScreenshot(driver, "screenshot1");
+		
 		adminuserspage.adminUsersInfomation("steffy", "abcdef","Admin");
 		boolean expectedMessage=adminuserspage.usernameAleardyExistAlertMessageIsDisplayed();
 		Assert.assertTrue(expectedMessage);		
@@ -67,7 +67,7 @@ public class AdminUsersTest extends Base {
 		adminuserspage=new AdminUsersPage(driver);
 		loginpage.login();
 		homepage.clickOnAdminUsers();
-		adminuserspage.deactivateUser("Mr. Leonore MarksDamion Jakubowski");
+		adminuserspage.deactivateUser("steffy");
 	}
 	
 	@Test

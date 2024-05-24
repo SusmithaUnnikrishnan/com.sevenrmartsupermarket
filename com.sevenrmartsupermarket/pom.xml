@@ -19,7 +19,6 @@
           <configuration>
 			 <suiteXmlFiles>
 				  <file>src/main/resources/XMLfiles/parallel.xml</file>
-				   <file>src/main/resources/XMLfiles/MultipleTests.xml</file>
 			 </suiteXmlFiles>
 		  </configuration>
         </plugin>
