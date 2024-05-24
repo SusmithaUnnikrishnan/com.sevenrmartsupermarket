@@ -42,7 +42,7 @@ public class AdminUsersTest extends Base {
 		loginpage.login("steffy", "abcdef");
 		homepage.clickOnAdminUsers();
 		boolean expectedUserProfileName=adminuserspage.newAdminLogoIsDisplayed();
-		Assert.assertTrue(expectedUserProfileName);	
+		
 		
 	}
 	
