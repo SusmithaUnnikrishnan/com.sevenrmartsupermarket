@@ -80,6 +80,7 @@ public class Base {
 		{
 			screenshotcapture.takeScreenshot(driver, itestresult.getName());
 		}
+		driver.close();
 	}
 	
 
