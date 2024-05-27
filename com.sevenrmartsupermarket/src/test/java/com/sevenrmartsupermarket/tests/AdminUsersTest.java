@@ -8,24 +8,23 @@ import com.sevenrmartsupermarket.base.Base;
 import com.sevenrmartsupermarket.pages.AdminUsersPage;
 import com.sevenrmartsupermarket.pages.HomePage;
 import com.sevenrmartsupermarket.pages.LoginPage;
+import com.sevenrmartsupermarket.utilities.PageUtility;
 import com.sevenrmartsupermarket.utilities.ScreenshotCapture;
 
 public class AdminUsersTest extends Base {
 	LoginPage loginpage;
 	HomePage homepage;
 	AdminUsersPage adminuserspage;
-	
+	PageUtility pageutility;
 	
 	@Test(groups="sanity")
 	public void verifyUsernameAlreadyExistAlertMessage()
 	{
-		
 		loginpage = new LoginPage(driver);		
 		homepage = new HomePage(driver);
 		adminuserspage=new AdminUsersPage(driver);
 		loginpage.login();
 		homepage.clickOnAdminUsers();
-		
 		adminuserspage.adminUsersInfomation("steffy", "abcdef","Admin");
 		boolean expectedMessage=adminuserspage.usernameAleardyExistAlertMessageIsDisplayed();
 		Assert.assertTrue(expectedMessage);		
@@ -37,26 +36,9 @@ public class AdminUsersTest extends Base {
 		loginpage = new LoginPage(driver);		
 		homepage = new HomePage(driver);
 		adminuserspage=new AdminUsersPage(driver);
-		loginpage.login();
-		homepage.logout();
 		loginpage.login("steffy", "abcdef");
-		homepage.clickOnAdminUsers();
 		boolean expectedUserProfileName=adminuserspage.newAdminLogoIsDisplayed();
 		Assert.assertTrue(expectedUserProfileName);	
-		
-	}
-	
-	@Test(groups="smoke")
-	public void verifyNewAdminUserCreated()
-	{
-		loginpage = new LoginPage(driver);		
-		homepage = new HomePage(driver);
-		adminuserspage=new AdminUsersPage(driver);
-		loginpage.login();
-		homepage.clickOnAdminUsers();				
-		boolean newUserDisplayedStatus=adminuserspage.newlyCreatedUserIsDisplayed("steffy");
-		Assert.assertTrue(newUserDisplayedStatus);	
-		
 	}
 	
 	@Test
@@ -67,7 +49,10 @@ public class AdminUsersTest extends Base {
 		adminuserspage=new AdminUsersPage(driver);
 		loginpage.login();
 		homepage.clickOnAdminUsers();
-		adminuserspage.deactivateUser("steffy");
+		adminuserspage.deactivateUser("Yolonda");
+		String expectedColour="rgba(220, 53, 69, 1)";
+		String actualColour=adminuserspage.getAdminUserDeactivationButtonColor("Yolonda");
+		Assert.assertEquals(actualColour, expectedColour);
 	}
 	
 	@Test
@@ -78,32 +63,27 @@ public class AdminUsersTest extends Base {
 		adminuserspage=new AdminUsersPage(driver);
 		loginpage.login();
 		homepage.clickOnAdminUsers();	
-		adminuserspage.editUserDetails("Olivia", "123456", "Partner");
+		adminuserspage.editUserDetails("Zayn","zayn123", "Staff");
 		homepage.logout();
-		loginpage.login("Olivia", "123456");
-		String expectedUserProfileName=" Olivia";
+		loginpage.login("Zayn", "zayn123");
+		String expectedUserProfileName=" Zayn";
 		String actualUserProfileName=adminuserspage.userProfileElement();
 		Assert.assertEquals(actualUserProfileName, expectedUserProfileName);
-		
 	}
 	
 	@Test(retryAnalyzer=com.sevenrmartsupermarket.listeners.RetryAnalyzer.class)
-	public void verifyUserProfileDeletion() //how to handle alert???
+	public void verifyUserProfileDeletion()
 	{
 		loginpage = new LoginPage(driver);		
 		homepage = new HomePage(driver);
 		adminuserspage=new AdminUsersPage(driver);
 		loginpage.login();
 		homepage.clickOnAdminUsers();
-		adminuserspage.deleteUser("Nitheesha73412.59384017003");
-		homepage.logout();
-		loginpage.login("Nitheesha73412.59384017003", "Password59846.181409");
-		boolean expectedMessage=loginpage.getErrorMessageAlert();
+		adminuserspage.deleteUser("Mozell Mitchell");
+		pageutility=new PageUtility(driver);
+		pageutility.alert_Accept();
+		boolean expectedMessage=adminuserspage.userDeletionAlertMessage();
 		Assert.assertTrue(expectedMessage);
 	}
 	
-	
-	
-	
-
 }

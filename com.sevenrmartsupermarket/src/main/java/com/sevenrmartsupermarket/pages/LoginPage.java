@@ -32,7 +32,6 @@ public class LoginPage {
 	
 	By homePageWaitElement=By.xpath("//a[@class='d-block']");
 	
-
 	public LoginPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -78,27 +77,24 @@ public class LoginPage {
 		clickOnLoginButton();	
 	}
 
-	
-	public boolean getErrorMessageAlert() {
-		 boolean closebuttondisplayed=alertCloseButton.isDisplayed();
-		 return  closebuttondisplayed;
-
+	public boolean getErrorMessageAlert() 
+		{
+		 	return  alertCloseButton.isDisplayed();
 		}
 	
-	public String logoText() {
-			String actuallogo= loginHeaderLogo.getText();
-			return actuallogo;
+	public String logoText()
+		{
+			return loginHeaderLogo.getText();
 		}
 		
-	public String useridText() {
-			String actualText= userNameField.getAttribute("placeholder");
-			return actualText;
+	public String usernameFieldLabel() 
+		{
+			return  userNameField.getAttribute("placeholder");
 		}
 		
-	public String remembermeText() {
-			String actualText= remembermeElement.getText();
-			return actualText;
+	public String remembermeText() 
+		{
+			return remembermeElement.getText();
 		}
-
 
 }

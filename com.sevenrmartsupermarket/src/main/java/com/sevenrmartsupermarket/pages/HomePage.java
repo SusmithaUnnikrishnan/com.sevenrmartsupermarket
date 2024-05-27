@@ -17,7 +17,7 @@ public class HomePage {
 	GeneralUtility generalUtility;
 	
 	@FindBy (xpath = "//a[@class='d-block']")
-	private WebElement userProfileElement;//private is used to  encapsulate data. we can only call it through method
+	private WebElement userProfileElement;
 	@FindBy(xpath="(//a[@class='nav-link'])[2]")
 	private WebElement adminLogoElement;
 	@FindBy(xpath="(//a[@class='dropdown-item'])[2]")
@@ -30,7 +30,6 @@ public class HomePage {
 	private WebElement adminUsersMoreInfoElement;
 	@FindBy(xpath="(//a[@class='small-box-footer'])[10]")
 	private WebElement manageOrdersMoreInfoElement;
-	
 	
 	public HomePage(WebDriver driver)
 	{
@@ -54,16 +53,17 @@ public class HomePage {
 		return userProfileElement.getText();
 	}
 	
-	public int graphicElementsSize()
+	public int dashboardElements()
 	{
 		generalUtility=new GeneralUtility();
 		List<String> items = new ArrayList<String>();
 		items=generalUtility.get_TextOfElements(dashboardElements);
-		int a=items.size();
-		return a;
+		int dashboardboardElementsNumber=items.size();
+		return dashboardboardElementsNumber;
 	}
 	
-	public void clickOnAdminUsers() {
+	public void clickOnAdminUsers() 
+	{
 		adminUsersMoreInfoElement.click();
 	}
 	

@@ -1,4 +1,4 @@
-<suite name="ReleaseRunner" parallel="tests">
+<suite name="ReleaseRunner" thread-count="5" parallel="tests">
 	<test name="SmokeTest">
 		<classes>
 			<class name="com.sevenrmartsupermarket.tests.HomeTest"></class>	

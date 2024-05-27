@@ -29,17 +29,13 @@ public class GeneralUtility {
 		return element.getCssValue(Value);
 	}
 	
-	public static String getRandomFullname() {
+	public static String getRandomFullname() 
+	{
 		Faker faker=new Faker();
-		//String name = faker.name().fullName();
-		//String firstName = faker.name().firstName();
-		//String lastName = faker.name().lastName();
-		//String streetAddress = faker.address().streetAddress();
-		return faker.name().fullName();
-		
+		return faker.name().fullName();	
 	}
-	public boolean isTextContains(WebElement element,String expectedtext) {
+	public boolean isTextContains(WebElement element,String expectedtext)
+	{
 		return element.getText().contains(expectedtext);
-		
 	}
 }

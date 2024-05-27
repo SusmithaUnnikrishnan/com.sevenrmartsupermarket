@@ -29,7 +29,6 @@ public class ManageOrdersPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	
 	public void clickOnSearchButton()
 	{
 		searchButton.click();

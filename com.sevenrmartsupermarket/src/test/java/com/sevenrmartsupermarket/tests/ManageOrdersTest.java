@@ -1,5 +1,6 @@
 package com.sevenrmartsupermarket.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import com.sevenrmartsupermarket.base.Base;

@@ -1,4 +1,4 @@
-<suite name="ReleaseRunner" thread-count="5" parallel="tests">
+<suite name="ParallelExecution" thread-count="5" parallel="tests">
 	<listeners>
 		<listener class-name="com.sevenrmartsupermarket.listeners.ExtentReporter"></listener>
 	</listeners>

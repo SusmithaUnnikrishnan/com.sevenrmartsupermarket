@@ -35,7 +35,7 @@ public class ExtentReporter implements IReporter{
 	  }
 	  }
 
-	  extent.flush();//to publish the report
+	  extent.flush();
 	  extent.close();
 	  }
 

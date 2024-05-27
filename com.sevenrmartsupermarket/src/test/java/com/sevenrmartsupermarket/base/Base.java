@@ -34,8 +34,7 @@ public class Base {
 		
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-		
+		}	
 	}
 	
 	/**initializing browser**/
@@ -58,7 +57,7 @@ public class Base {
 	}
 	
 	@Parameters("browser")
-	@BeforeMethod(enabled=false)//the browser is taken from suite
+	@BeforeMethod(enabled=false)
 	public void launchBrowser(String browser)
 	{
 		String url=properties.getProperty("url");
@@ -67,7 +66,7 @@ public class Base {
 	
 	@BeforeMethod(enabled=true,alwaysRun=true)
 	public void launchBrowser()
-	{
+	{ 
 		String browser=properties.getProperty("browser");
 		String url=properties.getProperty("url");
 		initialize(browser,url);

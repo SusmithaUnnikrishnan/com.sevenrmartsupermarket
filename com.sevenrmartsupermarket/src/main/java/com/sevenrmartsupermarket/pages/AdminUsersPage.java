@@ -40,6 +40,8 @@ public class AdminUsersPage {
 	private WebElement adminLogoElement;
 	@FindBy(xpath="//button[@name='Update']")
 	private WebElement updateButton;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	private WebElement userDeletionAlertMessage;
 	
 	public AdminUsersPage(WebDriver driver)
 	{
@@ -98,12 +100,6 @@ public class AdminUsersPage {
 		generalutility=new GeneralUtility();
 		List<String> namesList = new ArrayList();
 		namesList = generalutility.get_TextOfElements(userNameColumnElements);
-		/*  for (WebElement uerName : userNameColumnElements) {
-			if
-			{
-			System.out.println(uerName.getText());
-			}
-		}*/
 		int index = 0;
 		for (index = 0; index< namesList.size(); index++) 
 		{
@@ -117,8 +113,7 @@ public class AdminUsersPage {
 		pageutility.scrollAndClick(deactivateButton);
 	}
 	
-	
-	public boolean newlyCreatedUserIsDisplayed(String userName)//!!!!username is not in first page 
+	public String getAdminUserDeactivationButtonColor(String userName)
 	{
 		pageutility=new PageUtility(driver);
 		generalutility=new GeneralUtility();
@@ -133,9 +128,9 @@ public class AdminUsersPage {
 				break;
 			}
 		}
-		WebElement newlyCreatedUser=driver.findElement(By.xpath("//table//tbody//tr[" + index + "]//td[1]"));
-		boolean newUserDisplayed=newlyCreatedUser.isDisplayed();
-		return newUserDisplayed;
+		WebElement deactivateButton = driver.findElement(By.xpath("//table//tr[" + index + "]//td[5]//a[1]"));
+		String deactivateButtonColour=generalutility.get_CssValue(deactivateButton, "background-color");
+		return deactivateButtonColour;
 	}
 	
 	public void clickOnEditButton(String userName)
@@ -214,8 +209,11 @@ public class AdminUsersPage {
 		pageutility.scrollAndClick(deleteButton);
 	}
 	
-
-	
+	public boolean userDeletionAlertMessage() 
+	{
+	 	return  userDeletionAlertMessage.isDisplayed();
+	}
+		
 }
 	
 

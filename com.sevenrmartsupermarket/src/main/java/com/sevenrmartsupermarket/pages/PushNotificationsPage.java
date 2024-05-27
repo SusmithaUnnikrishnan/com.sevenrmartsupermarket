@@ -8,8 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import com.sevenrmartsupermarket.utilities.PageUtility;
 
 public class PushNotificationsPage {
-WebDriver driver;
-PageUtility pageutility;
+	WebDriver driver;
+	PageUtility pageutility;
 	
 	@FindBy (xpath = "//input[@id='title']")
 	private WebElement titleElement;
@@ -24,7 +24,6 @@ PageUtility pageutility;
 	@FindBy(xpath = "//button[@class='close']")
 	private WebElement alertCloseButton;
 
-	
 	public PushNotificationsPage(WebDriver driver)
 	{
 		this.driver=driver;
@@ -61,8 +60,8 @@ PageUtility pageutility;
 	public boolean alert_PushCloseButtonDisplayed()
 	{
 		pageutility=new PageUtility(driver); 
-		boolean displayed=pageutility.is_Displayed(closeButtonAlertPushNotification);
-		return displayed;
+		boolean closeButtonDisplayedStatus=pageutility.is_Displayed(closeButtonAlertPushNotification);
+		return closeButtonDisplayedStatus;
 	}
 	
 	public void resetButtonWithTextClick(String title,String description) 
@@ -76,8 +75,8 @@ PageUtility pageutility;
 	{
 		resetButtonWithTextClick(title,description);
 		pageutility=new PageUtility(driver); 
-		boolean closebuttondispalyed=pageutility.is_Displayed(alertCloseButton);
-		return closebuttondispalyed;
+		boolean alertClosebuttondispalyed=pageutility.is_Displayed(alertCloseButton);
+		return alertClosebuttondispalyed;
 	}
 	
 
